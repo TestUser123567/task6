@@ -1,6 +1,6 @@
 package org.example;
 
-import java.awt.Component;
+import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -12,7 +12,7 @@ public class TitlesFrame extends JFrame {
    private void initUI() {
       this.setTitle("Криві фігури");
       this.setDefaultCloseOperation(3);
-      this.add(new TitlesPanel(37));
+      this.add(new TitlesPanel(Colors.White_grey_gradient, Form.Star));
       this.setSize(350, 350);
       this.setLocationRelativeTo((Component)null);
    }

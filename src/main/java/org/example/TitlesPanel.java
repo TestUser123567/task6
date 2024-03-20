@@ -11,21 +11,25 @@ import java.awt.geom.AffineTransform;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+
+
 public class TitlesPanel extends JPanel implements ActionListener {
    private Graphics2D g2d;
    private Timer animation;
    private boolean is_done = true;
    private int start_angle = 0;
-   private int shape;
+
+   private Colors colors;
+   private Form form;
 
    /**
     *
-    * @param _shape - цілочисельне значення, за допомогою якого ініціалізується клас ShapeFactory.
-    *     *     *                   Двохзначне число. Перше число відповідє за тип фігури.
-    *     *     *                  Друге число відповідає за колір фігури
+    * @param colors - колір фігури
+    * @param form - тип фігури
     */
-   public TitlesPanel(int _shape) {
-      this.shape = _shape;
+   public TitlesPanel(Colors colors, Form form) {
+      this.colors = colors;
+      this.form = form;
       (this.animation = new Timer(50, this)).setInitialDelay(50);
       this.animation.start();
    }
@@ -48,7 +52,7 @@ public class TitlesPanel extends JPanel implements ActionListener {
       Insets insets = this.getInsets();
       int w = size.width - insets.left - insets.right;
       int h = size.height - insets.top - insets.bottom;
-      ShapeFactory shape = new ShapeFactory(this.shape);
+      ShapeFactory shape = new ShapeFactory(colors, form);
       this.g2d.setStroke(shape.stroke);
       this.g2d.setPaint(shape.paint);
       double angle = (double)(this.start_angle++);
